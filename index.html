@@ -15,6 +15,70 @@
     <link href="./assets/font/chatype" rel="stylesheet">
     <!--Favicons-->
 
+<script src="//fast.wistia.com/assets/external/E-v1.js" async></script>
+
+<script>
+    ! function () {
+        var analytics = window.analytics = window.analytics || [];
+        if (!analytics.initialize)
+            if (analytics.invoked) window.console && console.error && console.error("Segment snippet included twice.");
+            else {
+                analytics.invoked = !0;
+                analytics.methods = ["trackSubmit", "trackClick", "trackLink", "trackForm", "pageview", "identify",
+                    "reset", "group", "track", "ready", "alias", "debug", "page", "once", "off", "on"
+                ];
+                analytics.factory = function (t) {
+                    return function () {
+                        var e = Array.prototype.slice.call(arguments);
+                        e.unshift(t);
+                        analytics.push(e);
+                        return analytics
+                    }
+                };
+                for (var t = 0; t < analytics.methods.length; t++) {
+                    var e = analytics.methods[t];
+                    analytics[e] = analytics.factory(e)
+                }
+                analytics.load = function (t, e) {
+                    var n = document.createElement("script");
+                    n.type = "text/javascript";
+                    n.async = !0;
+                    n.src = ("https:" === document.location.protocol ? "https://" : "http://") +
+                        "cdn.segment.com/analytics.js/v1/" + t + "/analytics.min.js";
+                    var o = document.getElementsByTagName("script")[0];
+                    o.parentNode.insertBefore(n, o);
+                    analytics.integrationOptions = e
+                };
+                analytics.SNIPPET_VERSION = "4.0.1";
+                analytics.load("WPRQgAXjD8IEF6Q6WTvswDY8ysjc3k7S");
+                analytics.page();
+            }
+    }();
+
+
+video.bind("play", function() { 
+    analytics.track("Video Playback Started"), { 
+        category: 'Video', 
+        title: video.name() 
+    } 
+});
+
+video.bind("pause", function() { 
+    analytics.track('Video Playback Paused'), { 
+        category: 'Video', 
+        title: video.name() 
+    } 
+});
+
+video.bind("end", function() { 
+    analytics.track('Video Playback Completed'), { 
+        category: 'Video', 
+        title: video.name() 
+    } 
+});
+
+</script>
+
 </head>
 
 <body>
@@ -29,7 +93,17 @@
             <img src="./images/thumbs/14.jpg" alt="">
         </div>
     </div>
-
+    
+<div class="wistia_embed wistia_async_abcde12345" style="width:640px;height:360px;"></div>
+<script>
+    window._wq = window._wq || [];
+    _wq.push({
+        id: "abcde12345",
+        onReady: function (video) {
+            console.log("I got a handle to the video!", video);
+        }
+    });
+</script>
 
     <div class="section center">
         <h2 class="heading light">Pictures</h2>
