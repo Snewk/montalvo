@@ -55,28 +55,6 @@
             }
     }();
 
-
-video.bind("play", function() { 
-    analytics.track("Video Playback Started"), { 
-        category: 'Video', 
-        title: video.name() 
-    } 
-});
-
-video.bind("pause", function() { 
-    analytics.track('Video Playback Paused'), { 
-        category: 'Video', 
-        title: video.name() 
-    } 
-});
-
-video.bind("end", function() { 
-    analytics.track('Video Playback Completed'), { 
-        category: 'Video', 
-        title: video.name() 
-    } 
-});
-
 </script>
 
 </head>
@@ -102,13 +80,38 @@ video.bind("end", function() {
     </div>
 </div>
 <script>
-    window._wq = window._wq || [];
-    _wq.push({
-        id: "abcde12345",
-        onReady: function (video) {
-            console.log("I got a handle to the video!", video);
-        }
+
+window._wq = window._wq || [];
+window._wq.push({
+  id: "u8p9wq6mq8",
+  options: {
+    playerColor: "#56be8e"
+  },
+  onHasData: function(video) {
+        video.bind("play", function() { 
+        analytics.track("Video Playback Started"), { 
+            category: 'Video', 
+            title: video.name() 
+        } 
     });
+
+    video.bind("pause", function() { 
+        analytics.track('Video Playback Paused'), { 
+            category: 'Video', 
+            title: video.name() 
+        } 
+    });
+
+    video.bind("end", function() { 
+        analytics.track('Video Playback Completed'), { 
+            category: 'Video', 
+            title: video.name() 
+        } 
+    });
+  }
+});
+
+
 </script>
 
     <div class="section center">
