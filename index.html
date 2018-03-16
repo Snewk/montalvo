@@ -17,7 +17,36 @@
 
 </head>
 
-<body>
+<body onload="formatQs()">
+
+<script>
+    function formatQs() {
+
+	//Instantiate an array of officially supported utm parameters.
+	var utmList = ['utm_campaign', 'utm_source', 'utm_medium', 'utm_content'];
+
+	var output = {};
+    var qs = 'utm_source=google&utm_medium=cpc&utm_campaign=winter_promo&some_other_thing=someValue';
+	qs = qs.split('&');
+
+	for (var i = 0; i < qs.length; i++) {
+		var tokens = qs[i].split('=');
+
+		//Loop through our array of officially suppoerted utm parameters.
+		for (var j = 0; j < utmList.length; j++) {
+
+			//Check if index0 matches one of our official utm parameters defined in utmList.
+			if (utmList[j] === tokens[0]) {
+
+			//Write only these parameters to our output object.
+			output[tokens[0].toLowerCase()] = tokens[1];
+			}
+		}
+	}
+	//Fire our track call using the output object as properties.
+	analytics.track('User Referred', output);
+}
+</script>
 
 <script>
     ! function () {
