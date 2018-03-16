@@ -68,7 +68,7 @@
             <img src="./images/thumbs/14.jpg" alt="">
         </div>
     </div>
-    
+
 <script>
     window._wq = window._wq || [];
     window._wq.push({
@@ -109,39 +109,6 @@
     </div>
 </div>
 
-<script>
-window._wq = window._wq || [];
-window._wq.push({
-  id: "u8p9wq6mq8",
-  options: {
-    playerColor: "#56be8e"
-  },
-  onHasData: function(video) {
-        video.bind("play", function() { 
-        analytics.track("Video Playback Started"), { 
-            category: 'Video', 
-            title: video.name() 
-        } 
-    });
-
-    video.bind("pause", function() { 
-        analytics.track('Video Playback Paused'), { 
-            category: 'Video', 
-            title: video.name() 
-        } 
-    });
-
-    video.bind("end", function() { 
-        analytics.track('Video Playback Completed'), { 
-            category: 'Video', 
-            title: video.name() 
-        } 
-    });
-  }
-});
-
-
-</script>
 
     <div class="section center">
         <h2 class="heading light">Pictures</h2>
