@@ -68,6 +68,38 @@
             <img src="./images/thumbs/14.jpg" alt="">
         </div>
     </div>
+    
+<script>
+    window._wq = window._wq || [];
+    window._wq.push({
+        id: "u8p9wq6mq8",
+        options: {
+            playerColor: "#56be8e"
+        },
+        onHasData: function (video) {
+            video.bind("play", function () {
+                analytics.track("Video Playback Started"), {
+                    category: 'Video',
+                    title: video.name()
+                }
+            });
+
+            video.bind("pause", function () {
+                analytics.track('Video Playback Paused'), {
+                    category: 'Video',
+                    title: video.name()
+                }
+            });
+
+            video.bind("end", function () {
+                analytics.track('Video Playback Completed'), {
+                    category: 'Video',
+                    title: video.name()
+                }
+            });
+        }
+    });
+</script>
 
 <script src="https://fast.wistia.com/embed/medias/7s1flm86h1.jsonp" async></script>
 <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
